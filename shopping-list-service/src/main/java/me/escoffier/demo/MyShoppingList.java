@@ -17,6 +17,7 @@ public class MyShoppingList extends AbstractVerticle {
 
     @Override
     public void start() {
+        
         Router router = Router.router(vertx);
         router.route("/health").handler(rc -> rc.response().end("OK"));
         router.route("/").handler(this::getShoppingList);
@@ -33,6 +34,8 @@ public class MyShoppingList extends AbstractVerticle {
         vertx.createHttpServer()
             .requestHandler(router::accept)
             .listen(8080);
+
+
     }
 
     private void getShoppingList(RoutingContext rc) {
@@ -48,7 +51,8 @@ public class MyShoppingList extends AbstractVerticle {
                     +-->  For each completed evaluation (line),
                           write it to the HTTP response
          */
-       
+
+
          /*
                                shopping          pricer
                                backend
